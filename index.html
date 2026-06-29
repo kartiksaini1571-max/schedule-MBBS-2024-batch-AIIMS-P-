@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>June 2026 Teaching Schedule – 2nd Prof MBBS | AIIMS Patna</title>
+<style>
+  :root {
+    /* Dark theme (default) */
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --card: #20243a;
+    --accent: #4f8ef7;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --text: #e8eaf0;
+    --muted: #8b90a7;
+    --border: #2d3148;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --header-bg: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+    --header-title: #ffffff;
+    --day-name: #ffffff;
+    --modal-title: #ffffff;
+    --subject-name: #ffffff;
+    --note-bg: #2d2010;
+    --note-border: #7c4a00;
+    --note-text: #f59e0b;
+    --missing-color: #7c4a00;
+    --missing-bg: #2d2010;
+    --missing-border: #7c4a00;
+    --posting-color: #22c55e;
+    --attended-bg: #0d2a1a;
+    --attended-border: #22c55e;
+    --attended-color: #22c55e;
+    --tag-sdl-bg: #1a2d1a; --tag-sdl-color: #22c55e;
+    --tag-int-bg: #1a1a2d; --tag-int-color: #4f8ef7;
+    --tag-tut-bg: #2d1a1a; --tag-tut-color: #f59e0b;
+    --tag-prac-bg: #2d1a2a; --tag-prac-color: #ec4899;
+    --tag-post-bg: #0d1f14; --tag-post-color: #22c55e;
+    --tag-aetcom-bg: #1e2030; --tag-aetcom-color: #94a3b8;
+    --c-posting-bg: #0d1f14;
+    --bar-track: #0f1117;
+    --modal-overlay: rgba(0,0,0,0.6);
+    --obg-color: #a78bfa;
+    --fmt-color: #fb923c;
+    --aetcom-color: #94a3b8;
+  }
+
+  :root.light {
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --card: #eef1f8;
+    --accent: #2563eb;
+    --green: #16a34a;
+    --yellow: #d97706;
+    --red: #dc2626;
+    --pink: #db2777;
+    --cyan: #0891b2;
+    --text: #1e2233;
+    --muted: #6b7280;
+    --border: #d1d5e0;
+    --header-bg: linear-gradient(135deg, #e8edf8 0%, #dde3f2 100%);
+    --header-title: #1e2233;
+    --day-name: #1e2233;
+    --modal-title: #1e2233;
+    --subject-name: #1e2233;
+    --note-bg: #fefce8;
+    --note-border: #fbbf24;
+    --note-text: #92400e;
+    --missing-color: #92400e;
+    --missing-bg: #fef3c7;
+    --missing-border: #f59e0b;
+    --posting-color: #16a34a;
+    --attended-bg: #dcfce7;
+    --attended-border: #16a34a;
+    --attended-color: #15803d;
+    --tag-sdl-bg: #dcfce7; --tag-sdl-color: #15803d;
+    --tag-int-bg: #dbeafe; --tag-int-color: #1d4ed8;
+    --tag-tut-bg: #fef9c3; --tag-tut-color: #92400e;
+    --tag-prac-bg: #fce7f3; --tag-prac-color: #be185d;
+    --tag-post-bg: #dcfce7; --tag-post-color: #15803d;
+    --tag-aetcom-bg: #f1f5f9; --tag-aetcom-color: #475569;
+    --c-posting-bg: #f0fdf4;
+    --bar-track: #e5e7eb;
+    --modal-overlay: rgba(0,0,0,0.35);
+    --yellow: #b45309;
+    --green: #15803d;
+    --pink: #be185d;
+    --cyan: #0e7490;
+    --obg-color: #6d28d9;
+    --fmt-color: #c2410c;
+    --aetcom-color: #475569;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 0 0 40px 0;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .header h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--header-title);
+    letter-spacing: 0.3px;
+  }
+  .header p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .today-btn {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 13px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .today-btn:active { opacity: 0.8; }
+  .note-banner {
+    background: var(--note-bg);
+    border: 1px solid var(--note-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--note-text);
+    margin: 12px 16px 0;
+    line-height: 1.4;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* BATCH BADGE */
+  .batch-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px 0;
+  }
+  .batch-info {
+    padding: 8px 16px;
+    font-size: 11px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* DAY CARD */
+  .day-card {
+    margin: 12px 12px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: var(--card);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    gap: 8px;
+  }
+  .day-header:active { opacity: 0.85; }
+
+  .date-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .date-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .date-meta { display: flex; flex-direction: column; }
+  .day-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--day-name);
+  }
+  .month-year {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .day-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  .mini-pill {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  /* In light mode, override all inline dark backgrounds on mini-pills */
+  :root.light .mini-pill {
+    background: var(--card) !important;
+    border: 1px solid var(--border);
+    filter: none !important;
+  }
+  /* Darken each pill text color for light mode visibility */
+  :root.light .mini-pill[style*="ec4899"] { color: #be185d !important; border-color: #fce7f3; background: #fce7f3 !important; }
+  :root.light .mini-pill[style*="a78bfa"] { color: #6d28d9 !important; border-color: #ede9fe; background: #ede9fe !important; }
+  :root.light .mini-pill[style*="94a3b8"] { color: #475569 !important; border-color: #e2e8f0; background: #f1f5f9 !important; }
+  :root.light .mini-pill[style*="f59e0b"] { color: #92400e !important; border-color: #fef3c7; background: #fef9c3 !important; }
+  :root.light .mini-pill[style*="4f8ef7"] { color: #1d4ed8 !important; border-color: #dbeafe; background: #eff6ff !important; }
+  :root.light .mini-pill[style*="22c55e"] { color: #15803d !important; border-color: #dcfce7; background: #f0fdf4 !important; }
+  :root.light .mini-pill[style*="06b6d4"] { color: #0e7490 !important; border-color: #cffafe; background: #ecfeff !important; }
+  :root.light .mini-pill[style*="fb923c"] { color: #c2410c !important; border-color: #ffedd5; background: #fff7ed !important; }
+  :root.light .mini-pill.tag-post      { color: #15803d !important; border-color: #dcfce7; background: #f0fdf4 !important; }
+
+  .chevron {
+    color: var(--muted);
+    font-size: 16px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .day-card.open .chevron { transform: rotate(180deg); }
+
+  /* DAY BODY */
+  .day-body {
+    display: none;
+    padding: 0 0 12px;
+  }
+  .day-card.open .day-body { display: block; }
+
+  /* SESSION ROW */
+  .session {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+  }
+  .session-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 5px;
+  }
+  .session-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .item {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    border-left: 3px solid transparent;
+  }
+  .item-dept {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .item-topic {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .item-doctor {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .item-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+
+  /* BATCH PRACTICALS */
+  .batches-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .batch-block {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+  .batch-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--muted);
+  }
+  .batch-content {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .batch-doc {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* MISSING */
+  .missing {
+    font-size: 12px;
+    color: var(--missing-color);
+    background: var(--missing-bg);
+    border: 1px dashed var(--missing-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+
+  /* POSTING ONLY */
+  .posting-only {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--posting-color);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* COLORS PER DEPT */
+  .c-path   { border-color: #f59e0b; }
+  .c-pharma { border-color: #4f8ef7; }
+  .c-micro  { border-color: #22c55e; }
+  .c-med    { border-color: #ec4899; }
+  .c-surg   { border-color: #06b6d4; }
+  .c-obg    { border-color: #a78bfa; }
+  .c-fmt    { border-color: #fb923c; }
+  .c-aetcom { border-color: #94a3b8; }
+  .c-posting{ border-color: var(--green); background: var(--c-posting-bg); }
+
+  .d-path   { color: var(--yellow); }
+  .d-pharma { color: var(--accent); }
+  .d-micro  { color: var(--green); }
+  .d-med    { color: var(--pink); }
+  .d-surg   { color: var(--cyan); }
+  .d-obg    { color: var(--obg-color); }
+  .d-fmt    { color: var(--fmt-color); }
+  .d-aetcom { color: var(--aetcom-color); }
+
+  .tag-sdl    { background: var(--tag-sdl-bg); color: var(--tag-sdl-color); }
+  .tag-int    { background: var(--tag-int-bg); color: var(--tag-int-color); }
+  .tag-tut    { background: var(--tag-tut-bg); color: var(--tag-tut-color); }
+  .tag-prac   { background: var(--tag-prac-bg); color: var(--tag-prac-color); }
+  .tag-post   { background: var(--tag-post-bg); color: var(--tag-post-color); }
+  .tag-aetcom { background: var(--tag-aetcom-bg); color: var(--tag-aetcom-color); }
+
+  .batch-a { border-left: 3px solid #4f8ef7; }
+  .batch-b { border-left: 3px solid #22c55e; }
+  .batch-c { border-left: 3px solid #f59e0b; }
+
+  .footer {
+    text-align: center;
+    padding: 24px 16px 0;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ATTENDANCE */
+  .attend-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .attend-btn:active { opacity: 0.7; }
+  .attend-btn.attended {
+    background: var(--attended-bg);
+    border-color: var(--attended-border);
+    color: var(--attended-color);
+  }
+  .attend-btn .check-icon { font-size: 13px; }
+
+  .attend-summary {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 6px 14px 2px;
+  }
+  .attend-summary span { color: var(--green); font-weight: 700; }
+
+  /* SUBJECT SUMMARY */
+  .subject-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(79,142,247,0.45);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .subject-fab:active { opacity: 0.85; }
+  .subject-fab .fab-badge {
+    background: rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  .subject-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-overlay);
+    z-index: 300;
+    padding: 16px;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .subject-modal-overlay.open { display: flex; }
+  .subject-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 480px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 18px 16px 20px;
+  }
+  .subject-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .subject-modal-header h2 {
+    font-size: 15px;
+    color: var(--modal-title);
+  }
+  .subject-modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .subject-overall {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .subject-overall span { color: var(--green); font-weight: 700; }
+
+  .subject-row { margin-bottom: 12px; }
+  .subject-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .subject-row-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--subject-name);
+  }
+  .subject-row-count { font-size: 12px; color: var(--muted); }
+  .subject-row-count b { color: var(--text); }
+  .subject-bar-track {
+    height: 7px;
+    background: var(--bar-track);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  /* BATCH SELECTOR */
+  .batch-selector-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .batch-selector-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .batch-sel-btn {
+    background: var(--card);
+    color: var(--muted);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .batch-sel-btn:active { opacity: 0.75; }
+  .batch-sel-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .subject-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.2s;
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle-btn {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s;
+  }
+  .theme-toggle-btn:active { opacity: 0.75; }
+
+  /* Smooth theme transition */
+  *, *::before, *::after {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  /* But don't transition transforms/layout */
+  .chevron { transition: transform 0.2s !important; }
+  .attend-btn { transition: all 0.15s !important; }
+  .subject-bar-fill { transition: width 0.2s !important; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>📅 June 2026 Teaching Schedule</h1>
+      <p>2nd Professional MBBS Batch 2024 · AIIMS Patna</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-shrink:0;align-items:center">
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="today-btn" onclick="jumpToToday()">📍 Today</button>
+    </div>
+  </div>
+  <div class="batch-selector-row">
+    <span class="batch-selector-label">My Batch:</span>
+    <button class="batch-sel-btn" id="batchBtnA" onclick="switchBatch('A')">A</button>
+    <button class="batch-sel-btn" id="batchBtnB" onclick="switchBatch('B')">B</button>
+    <button class="batch-sel-btn" id="batchBtnC" onclick="switchBatch('C')">C</button>
+  </div>
+</div>
+
+<div class="note-banner">
+  ⚠️ Master schedule from Dean's Office pending — reconstructed from departmental schedules. Cells marked [Data missing] to be updated.
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot" style="background:#f59e0b"></div>PATH</div>
+  <div class="legend-item"><div class="dot" style="background:#4f8ef7"></div>PHARMA</div>
+  <div class="legend-item"><div class="dot" style="background:#22c55e"></div>MICRO</div>
+  <div class="legend-item"><div class="dot" style="background:#ec4899"></div>MED</div>
+  <div class="legend-item"><div class="dot" style="background:#06b6d4"></div>SURG</div>
+  <div class="legend-item"><div class="dot" style="background:#a78bfa"></div>OBG</div>
+  <div class="legend-item"><div class="dot" style="background:#fb923c"></div>FMT</div>
+  <div class="legend-item"><div class="dot" style="background:#94a3b8"></div>AETCOM</div>
+</div>
+
+<button class="subject-fab" id="subjectFab" onclick="openSubjectSummary()">
+  📊 Subjects <span class="fab-badge" id="fabBadge">0/0</span>
+</button>
+
+<div class="subject-modal-overlay" id="subjectModalOverlay" onclick="if(event.target===this) closeSubjectSummary()">
+  <div class="subject-modal">
+    <div class="subject-modal-header">
+      <h2>📚 Subject-wise Attendance</h2>
+      <button class="subject-modal-close" onclick="closeSubjectSummary()">✕</button>
+    </div>
+    <div class="subject-overall" id="subjectOverall"></div>
+    <div id="subjectRows"></div>
+  </div>
+</div>
+
+<!-- ===== 05 JUN ===== -->
+<div class="day-card" id="d0605">
+  <div class="day-header" onclick="toggle('d0605')">
+    <div class="date-block">
+      <div class="date-num">05</div>
+      <div class="date-meta">
+        <div class="day-name">Friday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1e2d;color:#ec4899">MED</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-med">
+          <div class="item-dept d-med">MED</div>
+          <div class="item-topic">Presenting problems in cardiovascular disease</div>
+          <div class="item-doctor">Dr. Shyama</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+  </div>
+</div>
+
+<!-- ===== 06 JUN ===== -->
+<div class="day-card" id="d0606">
+  <div class="day-header" onclick="toggle('d0606')">
+    <div class="date-block">
+      <div class="date-num">06</div>
+      <div class="date-meta">
+        <div class="day-name">Saturday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2e;color:#a78bfa">OBG</span>
+      <span class="mini-pill" style="background:#1e2030;color:#94a3b8">AETCOM</span>
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-obg">
+          <div class="item-dept d-obg">OBG</div>
+          <div class="item-topic">Preconceptional Care</div>
+          <div class="item-doctor">Dr. Pammy Pravina</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-aetcom">
+          <div class="item-dept d-aetcom">AETCOM</div>
+          <div class="item-topic">Documentation & Preservation of Medical Record</div>
+          <div class="item-doctor">Dr. Amit Patil / Dr. Chaitanya Mittal</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">10 AM–12 PM (Integration/SDL)</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Importance of body fluid in disease diagnosis (CSF, Pleural & Pericardial fluid, Peritoneal fluid/Ascitis)</div>
+          <div class="item-doctor">Dr. Avinash Singh</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">12–1 PM (SDL)</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH SDL</div>
+          <div class="item-topic">Pap Smear and its importance</div>
+          <div class="item-doctor">Dr. Tanya Prasad</div>
+          <span class="item-tag tag-sdl">SDL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 08 JUN ===== -->
+<div class="day-card" id="d0806">
+  <div class="day-header" onclick="toggle('d0806')">
+    <div class="date-block">
+      <div class="date-num">08</div>
+      <div class="date-meta">
+        <div class="day-name">Monday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Testicular tumours</div>
+          <div class="item-doctor">Dr. Shreekant Bharti</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">General Anaesthetics - I</div>
+          <div class="item-doctor">Dr. Pramod</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals (All Batches — Same)</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA Tutorial</div>
+          <div class="item-topic">Vaccine, Antisera and Immunoglobulins</div>
+          <div class="item-doctor">Dr. Alok (All SRs & JRs)</div>
+          <span class="item-tag tag-tut">Tutorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 09 JUN ===== -->
+<div class="day-card" id="d0906">
+  <div class="day-header" onclick="toggle('d0906')">
+    <div class="date-block">
+      <div class="date-num">09</div>
+      <div class="date-meta">
+        <div class="day-name">Tuesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">General Anaesthetics - II</div>
+          <div class="item-doctor">Dr. Pramod</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Bordetella pertussis</div>
+          <div class="item-doctor">Dr. Amarjeet</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PATH Gross – Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Tanya Prasad / Dr. Rupam Kumari</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PHARMA: Communicate with patient re: optimal use of devices</div>
+          <div class="batch-doc">Dr. Alok / Dr. Gautam</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">MICRO: Biochemical Reaction</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 10 JUN ===== -->
+<div class="day-card" id="d1006">
+  <div class="day-header" onclick="toggle('d1006')">
+    <div class="date-block">
+      <div class="date-num">10</div>
+      <div class="date-meta">
+        <div class="day-name">Wednesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Haemophilus influenzae</div>
+          <div class="item-doctor">Dr. Jutang</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Pre-malignant & malignant conditions of Penis</div>
+          <div class="item-doctor">Dr. Shreekant Bharti</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">MICRO: Biochemical Reaction</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PATH Gross – Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Tanya Prasad / Dr. Rupam Kumari</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PHARMA: Communicate with patient re: optimal use of devices</div>
+          <div class="batch-doc">Dr. Alok / Dr. Gautam</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 11 JUN ===== -->
+<div class="day-card" id="d1106">
+  <div class="day-header" onclick="toggle('d1106')">
+    <div class="date-block">
+      <div class="date-num">11</div>
+      <div class="date-meta">
+        <div class="day-name">Thursday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Benign & malignant condition of Prostate & Seminal Vesicle</div>
+          <div class="item-doctor">Dr. Shreekant Bharti</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Sedative Hypnotics - I</div>
+          <div class="item-doctor">Dr. Alok</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PHARMA: Communicate with patient re: optimal use of devices</div>
+          <div class="batch-doc">Dr. Alok / Dr. Gautam</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">MICRO: Biochemical Reaction</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PATH Gross – Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Tanya Prasad / Dr. Rupam Kumari</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 12 JUN ===== -->
+<div class="day-card" id="d1206">
+  <div class="day-header" onclick="toggle('d1206')">
+    <div class="date-block">
+      <div class="date-num">12</div>
+      <div class="date-meta">
+        <div class="day-name">Friday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#0d1c1e;color:#06b6d4">SURG</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-surg">
+          <div class="item-dept d-surg">SURG</div>
+          <div class="item-topic">Introduction to Surgical Clinics</div>
+          <div class="item-doctor">Dr. Deepak</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+  </div>
+</div>
+
+<!-- ===== 13 JUN ===== -->
+<div class="day-card" id="d1306">
+  <div class="day-header" onclick="toggle('d1306')">
+    <div class="date-block">
+      <div class="date-num">13</div>
+      <div class="date-meta">
+        <div class="day-name">Saturday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1e2d;color:#ec4899">MED</span>
+      <span class="mini-pill" style="background:#1e2030;color:#94a3b8">AETCOM</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-med">
+          <div class="item-dept d-med">MED</div>
+          <div class="item-topic">Bronchiectasis</div>
+          <div class="item-doctor">Dr. Janmeshwar Prasad</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-aetcom">
+          <div class="item-dept d-aetcom">AETCOM</div>
+          <div class="item-topic">Professional Responsibility in preventing Catheter-Associated UTI</div>
+          <div class="item-doctor">Dr. Asim</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">10 AM–12 PM (Integration)</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA Integration</div>
+          <div class="item-topic">Local, General Anaesthetics & Muscle relaxants</div>
+          <div class="item-doctor">Dr. Pramod (Dept. Anaesthesiology, Pain Medicine & Critical Care)</div>
+          <span class="item-tag tag-int">Integration</span>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">12–1 PM (SDL)</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA SDL</div>
+          <div class="item-topic">Local, General Anaesthetics & Muscle relaxants</div>
+          <div class="item-doctor">Dr. Pramod</div>
+          <span class="item-tag tag-sdl">SDL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 15 JUN ===== -->
+<div class="day-card" id="d1506">
+  <div class="day-header" onclick="toggle('d1506')">
+    <div class="date-block">
+      <div class="date-num">15</div>
+      <div class="date-meta">
+        <div class="day-name">Monday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Benign & pre-malignant conditions of cervix — Epidemiology, pathogenesis, Screening, diagnosis of carcinoma of cervix</div>
+          <div class="item-doctor">Dr. Tanya Prasad</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Sedative Hypnotics - II</div>
+          <div class="item-doctor">Dr. Alok</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals (All Batches — Same)</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO Tutorial</div>
+          <div class="item-topic">Clinical Microbiology Fever</div>
+          <div class="item-doctor">Dr. Bhaskar</div>
+          <span class="item-tag tag-tut">Tutorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 16 JUN ===== -->
+<div class="day-card" id="d1606">
+  <div class="day-header" onclick="toggle('d1606')">
+    <div class="date-block">
+      <div class="date-num">16</div>
+      <div class="date-meta">
+        <div class="day-name">Tuesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Ethyl and Methyl Alcohols</div>
+          <div class="item-doctor">Dr. Sunil</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Paramyxoviruses</div>
+          <div class="item-doctor">Dr. Binod</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PATH: Microscopy of Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Madhu Kumari / Dr. Rajiv Ranjan Kumar</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PHARMA: Explain to patient re: cost of treatment & patient compliance</div>
+          <div class="batch-doc">Dr. Shruti / Dr. Prachi</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">MICRO: E. coli (Lab diagnosis & Gram Stain)</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Priyanka</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 17 JUN ===== -->
+<div class="day-card" id="d1706">
+  <div class="day-header" onclick="toggle('d1706')">
+    <div class="date-block">
+      <div class="date-num">17</div>
+      <div class="date-meta">
+        <div class="day-name">Wednesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Paramyxoviruses</div>
+          <div class="item-doctor">Dr. Binod</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Ovarian tumors — Classification, etiology, pathogenesis, morphology, spread, complications</div>
+          <div class="item-doctor">Dr. Madhu Kumari</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">MICRO: E. coli (Lab diagnosis & Gram Stain)</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Priyanka</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PATH: Microscopy of Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Madhu Kumari / Dr. Rajiv Ranjan Kumar</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PHARMA: Explain to patient re: cost of treatment & patient compliance</div>
+          <div class="batch-doc">Dr. Shruti / Dr. Prachi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 18 JUN ===== -->
+<div class="day-card" id="d1806">
+  <div class="day-header" onclick="toggle('d1806')">
+    <div class="date-block">
+      <div class="date-num">18</div>
+      <div class="date-meta">
+        <div class="day-name">Thursday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Benign & pre-malignant condition of Endometrium</div>
+          <div class="item-doctor">Dr. Madhu Kumari</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antiepileptic Drugs - I</div>
+          <div class="item-doctor">Dr. Shruti</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PHARMA: Explain to patient re: cost of treatment & patient compliance</div>
+          <div class="batch-doc">Dr. Shruti / Dr. Prachi</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">MICRO: E. coli (Lab diagnosis & Gram Stain)</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Priyanka</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PATH: Microscopy of Testis & Ovary Tumours</div>
+          <div class="batch-doc">Dr. Madhu Kumari / Dr. Rajiv Ranjan Kumar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 19 JUN ===== -->
+<div class="day-card" id="d1906">
+  <div class="day-header" onclick="toggle('d1906')">
+    <div class="date-block">
+      <div class="date-num">19</div>
+      <div class="date-meta">
+        <div class="day-name">Friday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e1a10;color:#fb923c">FMT</span>
+      <span class="mini-pill" style="background:#1a1a2e;color:#a78bfa">OBG</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-fmt">
+          <div class="item-dept d-fmt">FMT</div>
+          <div class="item-topic">Clinical Research & Ethics</div>
+          <div class="item-doctor">Dr. Chaitanya Mittal</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-obg">
+          <div class="item-dept d-obg">OBG</div>
+          <div class="item-topic">Antenatal Care</div>
+          <div class="item-doctor">Dr. Sangam Jha</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals (All Batches — Same)</div>
+      <div class="session-items">
+        <div class="item c-fmt">
+          <div class="item-dept d-fmt">FMT Practical</div>
+          <div class="item-topic">Foetus Examination to opine about Age</div>
+          <div class="item-doctor">Dr. Satish Kumar, Dr. Sebin George Thomas, Dr. Deepan Roy, Dr. Dinil D. Nangelil, Dr. Srinivasan D</div>
+          <span class="item-tag tag-prac">Practical</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 20 JUN ===== -->
+<div class="day-card" id="d2006">
+  <div class="day-header" onclick="toggle('d2006')">
+    <div class="date-block">
+      <div class="date-num">20</div>
+      <div class="date-meta">
+        <div class="day-name">Saturday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#0d1c1e;color:#06b6d4">SURG</span>
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-surg">
+          <div class="item-dept d-surg">SURG</div>
+          <div class="item-topic">Metabolic response to injury</div>
+          <div class="item-doctor">Dr. Ashesh</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM (Integration)</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO Integration</div>
+          <div class="item-topic">Salmonella</div>
+          <div class="item-doctor">Dr. Prathyusha</div>
+          <span class="item-tag tag-int">Integration</span>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">12–1 PM (SDL)</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO SDL</div>
+          <div class="item-topic">Water Borne Diseases & Bacteriology of Air, Food, Milk</div>
+          <div class="item-doctor">Dr. Pallam</div>
+          <span class="item-tag tag-sdl">SDL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 22 JUN ===== -->
+<div class="day-card" id="d2206">
+  <div class="day-header" onclick="toggle('d2206')">
+    <div class="date-block">
+      <div class="date-num">22</div>
+      <div class="date-meta">
+        <div class="day-name">Monday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Epidemiology, etiology, pathogenesis, diagnosis of carcinoma of Endometrium</div>
+          <div class="item-doctor">Dr. Madhu Kumari</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antiepileptic Drugs - II</div>
+          <div class="item-doctor">Dr. Shruti</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals (All Batches — Same)</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH Tutorial</div>
+          <div class="item-topic">Etiology, pathogenesis, differentiating features and CSF findings in meningitis</div>
+          <div class="item-doctor">Dr. Ishrat Jahan</div>
+          <span class="item-tag tag-tut">Tutorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 23 JUN ===== -->
+<div class="day-card" id="d2306">
+  <div class="day-header" onclick="toggle('d2306')">
+    <div class="date-block">
+      <div class="date-num">23</div>
+      <div class="date-meta">
+        <div class="day-name">Tuesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antiparkinsonian Drugs</div>
+          <div class="item-doctor">Dr. Rajesh</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Introduction to Anaerob — Clostridium Tetani</div>
+          <div class="item-doctor">Dr. Asim</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PATH: Gross & Microscopy of tumours of Uterus</div>
+          <div class="batch-doc">Dr. Protik Mondal / Dr. Ankit Shandilya</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PHARMA: Legal & ethical aspects of prescribing Drugs</div>
+          <div class="batch-doc">Dr. Rajesh / Dr. Sourik</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">MICRO: Lab diagnosis of Klebsiella</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 24 JUN ===== -->
+<div class="day-card" id="d2406">
+  <div class="day-header" onclick="toggle('d2406')">
+    <div class="date-block">
+      <div class="date-num">24</div>
+      <div class="date-meta">
+        <div class="day-name">Wednesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Clostridium perfringens</div>
+          <div class="item-doctor">Dr. Pallam</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Pathogenesis, etiology, pathology, diagnosis & progression of Leiomyoma & Leiomyosarcoma</div>
+          <div class="item-doctor">Dr. Madhu Kumari</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">MICRO: Lab diagnosis of Klebsiella</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PATH: Gross & Microscopy of tumours of Uterus</div>
+          <div class="batch-doc">Dr. Protik Mondal / Dr. Ankit Shandilya</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PHARMA: Legal & ethical aspects of prescribing Drugs</div>
+          <div class="batch-doc">Dr. Rajesh / Dr. Sourik</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 25 JUN ===== -->
+<div class="day-card" id="d2506">
+  <div class="day-header" onclick="toggle('d2506')">
+    <div class="date-block">
+      <div class="date-num">25</div>
+      <div class="date-meta">
+        <div class="day-name">Thursday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Etiology, pathogenesis, pathology, morphology, clinical course & complication of gestational trophoblastic tumors</div>
+          <div class="item-doctor">Dr. Madhu Kumari</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antipsychotic Drug</div>
+          <div class="item-doctor">Dr. Sunil</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PHARMA: Legal & ethical aspects of prescribing Drugs</div>
+          <div class="batch-doc">Dr. Rajesh / Dr. Sourik</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">MICRO: Lab diagnosis of Klebsiella</div>
+          <div class="batch-doc">Dr. Prathyusha / Dr. Nitesh</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">PATH: Gross & Microscopy of tumours of Uterus</div>
+          <div class="batch-doc">Dr. Protik Mondal / Dr. Ankit Shandilya</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 26 JUN ===== -->
+<div class="day-card" id="d2606">
+  <div class="day-header" onclick="toggle('d2606')">
+    <div class="date-block">
+      <div class="date-num">26</div>
+      <div class="date-meta">
+        <div class="day-name">Friday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill tag-post">Clinical Posting Only</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="posting-only">🏥 Clinical Posting (Full Day)</div>
+  </div>
+</div>
+
+<!-- ===== 27 JUN ===== -->
+<div class="day-card" id="d2706">
+  <div class="day-header" onclick="toggle('d2706')">
+    <div class="date-block">
+      <div class="date-num">27</div>
+      <div class="date-meta">
+        <div class="day-name">Saturday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2e;color:#a78bfa">OBG</span>
+      <span class="mini-pill" style="background:#1e2030;color:#94a3b8">AETCOM</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-obg">
+          <div class="item-dept d-obg">OBG</div>
+          <div class="item-topic">USG in 1st Trimester</div>
+          <div class="item-doctor">Dr. Indira Prasad</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-aetcom">
+          <div class="item-dept d-aetcom">AETCOM</div>
+          <div class="item-topic">Ensuring Privacy, Dignity & Gender Sensitivity While Collecting Urine & Genital Specimens</div>
+          <div class="item-doctor">Dr. Asim</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">10 AM–12 PM & 12–1 PM</div>
+      <div class="session-items">
+        <div class="missing">⚠️ Data missing — no departmental Integration or SDL scheduled</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 29 JUN ===== -->
+<div class="day-card" id="d2906">
+  <div class="day-header" onclick="toggle('d2906')">
+    <div class="date-block">
+      <div class="date-num">29</div>
+      <div class="date-meta">
+        <div class="day-name">Monday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1e2010;color:#f59e0b">PATH</span>
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-path">
+          <div class="item-dept d-path">PATH</div>
+          <div class="item-topic">Classify & describe types, etiology, pathogenesis & hormonal dependency of benign breast disease</div>
+          <div class="item-doctor">Dr. Punam Prasad Bhadani</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antimanic Drug</div>
+          <div class="item-doctor">Dr. Sunil</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals (All Batches — Same)</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA Tutorial</div>
+          <div class="item-topic">CNS Stimulants and Cognition Enhancers</div>
+          <div class="item-doctor">Dr. Rajesh (All SRs & JRs)</div>
+          <span class="item-tag tag-tut">Tutorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 30 JUN ===== -->
+<div class="day-card" id="d3006">
+  <div class="day-header" onclick="toggle('d3006')">
+    <div class="date-block">
+      <div class="date-num">30</div>
+      <div class="date-meta">
+        <div class="day-name">Tuesday</div>
+        <div class="month-year">Jun 2026</div>
+      </div>
+    </div>
+    <div class="day-pills">
+      <span class="mini-pill" style="background:#1a1a2d;color:#4f8ef7">PHARMA</span>
+      <span class="mini-pill" style="background:#0d1f14;color:#22c55e">MICRO</span>
+    </div>
+    <div class="chevron">▾</div>
+  </div>
+  <div class="day-body">
+    <div class="session">
+      <div class="session-time">8–9 AM</div>
+      <div class="session-items">
+        <div class="item c-pharma">
+          <div class="item-dept d-pharma">PHARMA</div>
+          <div class="item-topic">Antidepressant Drugs</div>
+          <div class="item-doctor">Dr. Rajesh</div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-time">9–10 AM</div>
+      <div class="session-items">
+        <div class="item c-micro">
+          <div class="item-dept d-micro">MICRO</div>
+          <div class="item-topic">Clostridium botulinum / Clostridium difficile</div>
+          <div class="item-doctor">Dr. Prathyusha</div>
+        </div>
+      </div>
+    </div>
+    <div class="posting-only">🏥 10 AM–12 PM: Clinical Posting</div>
+    <div class="session">
+      <div class="session-time">2–4 PM Practicals</div>
+      <div class="batches-row">
+        <div class="batch-block batch-a">
+          <div class="batch-label">Batch A (Roll 1–40)</div>
+          <div class="batch-content">PATH: Gross & Microscopy of benign breast disease</div>
+          <div class="batch-doc">Dr. Madhu Kumari / Dr. Amit Kumar</div>
+        </div>
+        <div class="batch-block batch-b">
+          <div class="batch-label">Batch B (Roll 41–80)</div>
+          <div class="batch-content">PHARMA: Communicate with patient with empathy & ethics on all aspects of drug use</div>
+          <div class="batch-doc">Dr. Sunil / Dr. Riya</div>
+        </div>
+        <div class="batch-block batch-c">
+          <div class="batch-label">Batch C (Roll 81+)</div>
+          <div class="batch-content">MICRO Practical (Batch C scheduled 30/06 & 01–02/07)</div>
+          <div class="missing" style="margin-top:4px">⚠️ Data missing — to be updated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Batch A: Roll 1–40 · Batch B: Roll 41–80 · Batch C: Roll 81+ & Old Students<br>
+  Made with Claude by Kartik Saini · Resources provided by Vipul K · AIIMS Patna 2nd Prof MBBS 2024
+</div>
+
+<script>
+  // ── Batch configuration ──────────────────────────────
+  const BATCH_STORE_KEY = 'user_batch_june2026';
+  let USER_BATCH = localStorage.getItem(BATCH_STORE_KEY) || "B";
+
+  function applyBatchVisibility() {
+    document.querySelectorAll('.batch-block').forEach(el => {
+      const belongs = el.classList.contains('batch-' + USER_BATCH.toLowerCase());
+      el.style.display = belongs ? '' : 'none';
+    });
+  }
+
+  function switchBatch(batch) {
+    haptic('light');
+    USER_BATCH = batch;
+    localStorage.setItem(BATCH_STORE_KEY, batch);
+    updateBatchButtons();
+    applyBatchVisibility();
+    // Re-run attendance init: remove old buttons then re-inject
+    document.querySelectorAll('.attend-btn').forEach(b => b.remove());
+    document.querySelectorAll('.attend-summary').forEach(s => s.remove());
+    initAttendance();
+  }
+
+  function updateBatchButtons() {
+    ['A','B','C'].forEach(b => {
+      const btn = document.getElementById('batchBtn' + b);
+      if (btn) btn.classList.toggle('active', b === USER_BATCH);
+    });
+  }
+
+  // ── Haptic feedback ──────────────────────────────────
+  function haptic(type) {
+    if (!navigator.vibrate) return;
+    if (type === 'light')  navigator.vibrate(10);
+    else if (type === 'medium') navigator.vibrate(25);
+    else if (type === 'success') navigator.vibrate([10, 40, 20]);
+    else if (type === 'toggle') navigator.vibrate(15);
+  }
+
+  // ── Theme ────────────────────────────────────────────
+  const THEME_STORE_KEY = 'theme_june2026';
+  let currentTheme = localStorage.getItem(THEME_STORE_KEY) || 'dark';
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) btn.textContent = '☀️';
+    } else {
+      document.documentElement.classList.remove('light');
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) btn.textContent = '🌙';
+    }
+    localStorage.setItem(THEME_STORE_KEY, theme);
+  }
+
+  function toggleTheme() {
+    haptic('toggle');
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  }
+
+  // Apply saved theme immediately
+  applyTheme(currentTheme);
+
+  // ── Toggle day card ──────────────────────────────────
+  function toggle(id) {
+    haptic('light');
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  // ── Attendance storage ───────────────────────────────
+  const STORE_KEY = 'attendance_june2026';
+
+  function loadAttendance() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+    catch { return {}; }
+  }
+
+  function saveAttendance(data) {
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  }
+
+  function toggleAttend(btn, classId) {
+    const data = loadAttendance();
+    data[classId] = !data[classId];
+    saveAttendance(data);
+    haptic(data[classId] ? 'success' : 'medium');
+    renderBtn(btn, data[classId]);
+    updateDaySummary(btn.closest('.day-card'));
+    renderSubjectSummary();
+  }
+
+  function renderBtn(btn, attended) {
+    btn.classList.toggle('attended', attended);
+    btn.innerHTML = attended
+      ? '<span class="check-icon">✓</span> Attended'
+      : '<span class="check-icon">○</span> Mark attended';
+  }
+
+  function updateDaySummary(card) {
+    if (!card) return;
+    const btns = card.querySelectorAll('.attend-btn');
+    const total = btns.length;
+    const done  = card.querySelectorAll('.attend-btn.attended').length;
+    let summary = card.querySelector('.attend-summary');
+    if (!summary) {
+      summary = document.createElement('div');
+      summary.className = 'attend-summary';
+      card.querySelector('.day-body').prepend(summary);
+    }
+    summary.innerHTML = `Attended <span>${done}/${total}</span> class${total !== 1 ? 'es' : ''}`;
+  }
+
+  // ── Subject-wise summary ─────────────────────────────
+  const SUBJECT_ORDER = ['PATH','PHARMA','MICRO','MED','SURG','OBG','FMT','AETCOM','Clinical Posting'];
+  const SUBJECT_COLOR = {
+    PATH: '#f59e0b', PHARMA: '#4f8ef7', MICRO: '#22c55e', MED: '#ec4899',
+    SURG: '#06b6d4', OBG: '#a78bfa', FMT: '#fb923c', AETCOM: '#94a3b8',
+    'Clinical Posting': '#22c55e'
+  };
+
+  function extractSubject(el) {
+    if (el.classList.contains('posting-only')) return 'Clinical Posting';
+    let text = '';
+    const deptEl = el.querySelector('.item-dept');
+    if (deptEl) {
+      text = deptEl.textContent;
+    } else {
+      const contentEl = el.querySelector('.batch-content');
+      text = contentEl ? contentEl.textContent : '';
+    }
+    const firstToken = text.trim().split(/\s+/)[0] || '';
+    const clean = firstToken.replace(/[^A-Za-z]/g, '').toUpperCase();
+    return clean || 'Other';
+  }
+
+  // ── Check if a batch-block belongs to the user's batch ──
+  function isUserBatch(el) {
+    if (!el.classList.contains('batch-block')) return true; // non-batch elements always counted
+    return el.classList.contains('batch-' + USER_BATCH.toLowerCase());
+  }
+
+  function computeSubjectStats() {
+    const stats = {};
+    document.querySelectorAll('.attend-btn').forEach(btn => {
+      const subj = btn.dataset.subject || 'Other';
+      if (!stats[subj]) stats[subj] = { attended: 0, total: 0 };
+      stats[subj].total++;
+      if (btn.classList.contains('attended')) stats[subj].attended++;
+    });
+    return stats;
+  }
+
+  function renderSubjectSummary() {
+    const stats = computeSubjectStats();
+    const subjects = Object.keys(stats).sort((a, b) => {
+      const ia = SUBJECT_ORDER.indexOf(a), ib = SUBJECT_ORDER.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
+
+    let overallAttended = 0, overallTotal = 0;
+    const rows = subjects.map(subj => {
+      const s = stats[subj];
+      overallAttended += s.attended;
+      overallTotal += s.total;
+      const pct = s.total ? Math.round((s.attended / s.total) * 100) : 0;
+      const color = SUBJECT_COLOR[subj] || '#8b90a7';
+      return `
+        <div class="subject-row">
+          <div class="subject-row-top">
+            <span class="subject-row-name">${subj}</span>
+            <span class="subject-row-count"><b>${s.attended}</b>/${s.total} · ${pct}%</span>
+          </div>
+          <div class="subject-bar-track">
+            <div class="subject-bar-fill" style="width:${pct}%;background:${color}"></div>
+          </div>
+        </div>`;
+    }).join('');
+
+    const rowsEl = document.getElementById('subjectRows');
+    if (rowsEl) rowsEl.innerHTML = rows;
+
+    const overallPct = overallTotal ? Math.round((overallAttended / overallTotal) * 100) : 0;
+    const overallEl = document.getElementById('subjectOverall');
+    if (overallEl) {
+      overallEl.innerHTML = `Overall: <span>${overallAttended}/${overallTotal}</span> classes attended (${overallPct}%) · Batch ${USER_BATCH}`;
+    }
+    const badge = document.getElementById('fabBadge');
+    if (badge) badge.textContent = `${overallAttended}/${overallTotal}`;
+  }
+
+  function openSubjectSummary() {
+    renderSubjectSummary();
+    document.getElementById('subjectModalOverlay').classList.add('open');
+  }
+
+  function closeSubjectSummary() {
+    document.getElementById('subjectModalOverlay').classList.remove('open');
+  }
+
+  // ── Inject attend buttons — only for user's batch in batch slots ──
+  function initAttendance() {
+    const data = loadAttendance();
+    let counter = 0;
+
+    document.querySelectorAll('.item, .batch-block, .posting-only').forEach(el => {
+      const card = el.closest('.day-card');
+      const dayId = card ? card.id : 'x';
+      const classId = dayId + '_c' + counter++;
+
+      // Skip batch-blocks that don't belong to USER_BATCH
+      if (el.classList.contains('batch-block') && !isUserBatch(el)) {
+        return; // No attend button injected; not counted in totals
+      }
+
+      const subject = extractSubject(el);
+
+      const btn = document.createElement('button');
+      btn.className = 'attend-btn';
+      btn.dataset.subject = subject;
+      btn.onclick = (e) => { e.stopPropagation(); toggleAttend(btn, classId); };
+      renderBtn(btn, !!data[classId]);
+      el.appendChild(btn);
+    });
+
+    // Draw summaries for each day card
+    document.querySelectorAll('.day-card').forEach(card => {
+      if (card.querySelectorAll('.attend-btn').length > 0) {
+        updateDaySummary(card);
+      }
+    });
+
+    renderSubjectSummary();
+  }
+
+  // ── Jump to today — triggered only by the Today button ──
+  function jumpToToday() {
+    haptic('medium');
+    const today = new Date();
+    const m = today.getMonth() + 1;
+    const d = today.getDate();
+    if (m === 6) {
+      const padded = String(d).padStart(2, '0');
+      const id = 'd' + padded + '06';
+      const el = document.getElementById(id);
+      if (el) {
+        // Open card if not already open
+        if (!el.classList.contains('open')) {
+          el.classList.add('open');
+        }
+        // Scroll to card
+        const headerH = document.querySelector('.header').offsetHeight;
+        const top = el.getBoundingClientRect().top + window.scrollY - headerH - 10;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // Brief highlight animation after scroll settles
+        setTimeout(() => {
+          el.style.transition = 'box-shadow 0.3s ease, border-color 0.3s ease';
+          el.style.boxShadow = '0 0 0 2px var(--accent)';
+          el.style.borderColor = 'var(--accent)';
+          setTimeout(() => {
+            el.style.boxShadow = '';
+            el.style.borderColor = '';
+            setTimeout(() => { el.style.transition = ''; }, 300);
+          }, 900);
+        }, 500);
+      }
+    }
+  }
+
+  // ── Init: NO auto-scroll, NO auto-open. Page starts at top with all cards collapsed. ──
+  updateBatchButtons();
+  applyBatchVisibility();
+  initAttendance();
+</script>
+</body>
+</html>
